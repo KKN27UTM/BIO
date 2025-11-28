@@ -59,7 +59,7 @@
 /* --- CARD STYLE --- */
 .team-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
     
     /* PERBAIKAN: Agar responsif, jangan pakai width fix */
@@ -85,7 +85,7 @@
     width: 100%;
     height: 280px; /* Tinggi gambar diperbesar sedikit agar proporsional */
     object-fit: cover;
-    object-position: top center; /* Fokus ke wajah bagian atas-tengah */
+    object-position: bottom center; /* Fokus ke wajah bagian atas-tengah */
 }
 
 .team-content {

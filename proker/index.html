@@ -18,7 +18,7 @@
 </head>
 <body>
 
-    <nav>
+    <nav class="navbar-fixed">
         <a href="./" class="logo"> 
             <img src="../assets/icons/logo-kkn.jpg" alt="Logo KKN" class="img-logo">
             KKN27UTM
@@ -36,7 +36,7 @@
             <li><a href="../divisi/">Divisi</a></li>
             <li><a href="#" class="btn-active">Proker</a></li>
             <li><a href="../profile/">Profil</a></li>
-            <li><a href="../contact/">Kontak</a></li>
+            <li><a href="../kegiatan/">Kegiatan</a></li>
         </ul>
     </nav>
 
@@ -51,9 +51,31 @@
             </p>
         </div>
 
+        <div style="text-align: center; padding: 50px 20px; color: #888;">
+            <i class="ri-folder-info-line" style="font-size: 4rem; color: #ddd; margin-bottom: 20px; display: block;"></i>
+            <h3 style="color: #555; margin-bottom: 10px;">Program Kerja Belum Tersedia</h3>
+            <p style="max-width: 400px; margin: 0 auto; line-height: 1.6;">
+                Saat ini kami sedang menyusun program kerja terbaik untuk Desa Pamekasan. 
+                Silakan kembali lagi nanti untuk melihat update terbaru.
+            </p>
+        </div>
+
+
+    </section>
+
+    <!-- <section class="proker-section">
+        
+        <div class="proker-header">
+            <h1>Program Kerja Unggulan</h1>
+            <p>
+                Berikut adalah detail program kerja yang kami laksanakan di Desa Pamekasan 
+                untuk mendukung kemajuan masyarakat dan lingkungan.
+            </p>
+        </div>
+
         <div class="proker-grid">
 
-            <div class="proker-card">
+            <!-- <div class="proker-card">
                 <img src="../assets/img/kkn-didesa-penari.jpg" alt="Pembuatan Kompos" class="proker-thumb">
                 
                 <div class="proker-content">
@@ -99,11 +121,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-        </div>
+        <!-- </div>
 
-    </section>
+    </section> -->
 
 
     <footer>
@@ -111,7 +133,7 @@
             
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <img src="../assets/icons/logo-kkn.jpg" alt="Logo KKN" class="img-logo">
+                    <img src="assets/icons/logo-kkn.jpg" alt="Logo KKN" class="img-logo">
                 </div>
                 <p class="copyright">
                     © 2025 KKN27UTM<br>
@@ -123,17 +145,18 @@
             <div class="footer-col">
                 <h4>Page</h4>
                 <ul>
-                    <li><a href="../">Home</a></li>
-                    <li><a href="../divisi/">Divisi</a></li>
-                    <li><a href="#">Proker</a></li> <li><a href="../profile/">Profil</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="divisi/">Divisi</a></li>
+                    <li><a href="proker/">Proker</a></li>
+                    <li><a href="profile/">Profil</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h4>Kontak</h4>
                 <ul>
-                    <li><a href="mailto:mishbahus30@gmail.com">Email Kami</a></li>
-                    <li><a href="https://maps.app.goo.gl/cSvXK1jCdYyCerhZ8">Lokasi Posko</a></li>
+                    <li><a href="mailto:kkngrujukan.27@gmail.com">Email Kami</a></li>
+                    <li><a href="https://maps.app.goo.gl/cSvXK1jCdYyCerhZ8" target="_blank">Lokasi Posko</a></li>
                 </ul>
             </div>
 
@@ -141,13 +164,13 @@
                 <h4>Media Sosial</h4>
                 <ul class="social-list">
                     <li>
-                        <a href="#"><i class="ri-instagram-line"></i> Instagram</a>
+                        <a href="https://www.instagram.com/kkngrujugan27?igsh=MjF6N2FybjUxdnc1" target="_blank"><i class="ri-instagram-line"></i> Instagram</a>
                     </li>
                     <li>
-                        <a href="#"><i class="ri-tiktok-fill"></i> TikTok</a>
+                        <a href="#" target="_blank"><i class="ri-tiktok-fill"></i> TikTok</a>
                     </li>
                     <li>
-                        <a href="#"><i class="ri-youtube-fill"></i> Youtube</a>
+                        <a href="#" target="_blank"><i class="ri-youtube-fill"></i> Youtube</a>
                     </li>
                 </ul>
             </div>
@@ -155,7 +178,19 @@
         </div>
     </footer>
 
+
     <script>
+        // Logika untuk mengubah warna navbar saat di-scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar-fixed');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Script Hamburger Menu (Yang lama tetap dipakai)
         const menuToggle = document.querySelector('.menu-toggle input');
         const nav = document.querySelector('.nav-links');
 

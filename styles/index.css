@@ -11,7 +11,30 @@ body {
     color: #333;
 }
 
-/* --- NAVBAR --- */
+/* ================================================= */
+/* --- 1. NAVBAR FIXED & SCROLL EFFECT --- */
+/* ================================================= */
+/* Ganti nav lama dengan navbar-fixed */
+nav.navbar-fixed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 80px;
+    
+    /* Agar menempel di atas */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Pastikan di atas semua elemen */
+    
+    /* Warna Awal (Putih) */
+    background-color: white; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.4s ease; /* Efek transisi halus */
+}
+
+/* Style default Nav (jika ada halaman lain yg blm pakai class navbar-fixed) */
 nav {
     display: flex;
     justify-content: space-between;
@@ -27,11 +50,12 @@ nav {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #000;
+    color: #000; /* Warna teks logo awal: Hitam */
     text-decoration: none;
+    transition: 0.3s;
 }
 
-/* Kotak hitam kecil simulasi logo kubus */
+/* Kotak hitam kecil simulasi logo kubus (Jika masih dipakai) */
 .logo-icon {
     width: 24px;
     height: 24px;
@@ -56,13 +80,39 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: #888;
+    color: #555; /* Warna link awal: Abu tua */
     font-weight: 500;
     transition: 0.3s;
 }
 
 .nav-links a:hover {
     color: #F85F14;
+}
+
+/* --- STATE SAAT DI-SCROLL (Navbar jadi Hitam Transparan) --- */
+nav.navbar-fixed.scrolled {
+    background-color: rgba(0, 0, 0, 0.85); /* Hitam Transparan */
+    padding: 10px 80px; /* Sedikit mengecil biar manis */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Saat discroll, warna teks logo jadi putih */
+nav.navbar-fixed.scrolled .logo {
+    color: #fff;
+}
+
+/* Saat discroll, warna link jadi putih/abu terang */
+nav.navbar-fixed.scrolled .nav-links a {
+    color: #ddd;
+}
+
+nav.navbar-fixed.scrolled .nav-links a:hover {
+    color: #F85F14; /* Tetap oranye saat hover */
+}
+
+/* Ubah warna hamburger menu saat discroll (Nanti otomatis kena style hamburger di bawah) */
+nav.navbar-fixed.scrolled .menu-toggle span {
+    background-color: white;
 }
 
 .btn-active {
@@ -77,64 +127,84 @@ nav {
     background-color: #d64d0d;
 }
 
-/* --- HERO SECTION (KONTEN UTAMA) --- */
-.hero {
+
+/* ================================================= */
+/* --- 2. HERO SECTION (HOVER EFFECT) --- */
+/* ================================================= */
+.hero-bg {
+    /* GANTI URL GAMBAR DI SINI - Pastikan path benar */
+    background-image: url('../assets/img/fotbar_tamankampus.JPG');
+    
+    background-size: cover; /* Agar gambar full layar */
+    background-position: center 70%; /* Fokus tengah */
+    background-repeat: no-repeat;
+    
+    width: 100%;
+    height: 100vh; /* Tinggi Full Layar (Viewport Height) */
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 90vh;
-    padding: 0 80px;
-    gap: 50px;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Bagian Kiri (Gambar) */
-.hero-image {
-    flex: 1;
+/* Layer Hitam & Konten Teks (Awalnya Hilang) */
+.hero-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Overlay hitam transparan agar tulisan terbaca */
+    
     display: flex;
     justify-content: center;
-    position: relative;
+    align-items: center;
+    
+    /* EFEK HILANG (Hidden) */
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out; /* Animasi muncul perlahan */
 }
 
-.blob-bg {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background-color: white; /* Warna biru muda langit */
-    border-radius: 50%;
-    z-index: 1;
-    top: 80px;
+/* Konten di tengah */
+.hero-content {
+    text-align: center;
+    max-width: 700px;
+    padding: 20px;
+    color: white; /* Teks jadi putih karena background gelap */
+    
+    /* Efek naik sedikit saat muncul */
+    transform: translateY(20px);
+    transition: transform 0.5s ease;
 }
 
-.hero-image img {
-    width: 370px;
-    z-index: 2;
-    position: relative;
-    border-radius: 30px;
+/* --- HOVER TRIGGER (SAAT MOUSE MASUK) --- */
+.hero-bg:hover .hero-overlay {
+    opacity: 1; /* Munculkan overlay */
 }
 
-/* Bagian Kanan (Teks) */
-.hero-text {
-    flex: 1;
-    max-width: 600px;
+.hero-bg:hover .hero-content {
+    transform: translateY(0); /* Kembalikan posisi teks */
 }
 
-.hero-text h1 {
+/* Styling Teks Hero */
+.hero-content h1 {
     font-family: 'Merriweather', serif;
-    font-size: 4rem;
-    line-height: 1.1;
-    color: #1A1A2E;
+    font-size: 3.5rem;
+    line-height: 1.2;
     margin-bottom: 20px;
+    color: #ffffff;
 }
 
-.hero-text p {
-    font-size: 1rem;
+.hero-content p {
+    font-size: 1.1rem;
     line-height: 1.6;
-    color: #666;
     margin-bottom: 30px;
+    color: #f0f0f0;
 }
 
+/* Tombol CTA */
 .cta-group {
     display: flex;
+    justify-content: center; /* Tombol rata tengah */
     gap: 20px;
     margin-bottom: 20px;
 }
@@ -161,7 +231,7 @@ nav {
 }
 
 .small-link {
-    color: #6c757d;
+    color: #ddd; /* Ganti jadi agak terang agar kelihatan di dark bg */
     text-decoration: none;
     font-size: 0.9rem;
     display: block;
@@ -170,7 +240,11 @@ nav {
 
 .small-link:hover {
     text-decoration: underline;
+    color: #fff;
 }
+
+
+
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
@@ -347,7 +421,7 @@ nav {
 }
 
 .about-image img {
-    width: 80%;
+    width: 90%;
     border-radius: 20px; /* Sudut gambar melengkung sesuai desain */
     object-fit: cover;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Bayangan halus */
@@ -499,8 +573,8 @@ nav {
 
 /* Foto Profil Bulat */
 .profile-img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%; /* Membuat gambar jadi bulat */
     object-fit: cover;
     margin-bottom: 20px;
@@ -616,8 +690,8 @@ nav {
 
 /* Foto Tim */
 .team-img {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
@@ -976,7 +1050,8 @@ footer {
 /* ================================================= */
 
 @media (max-width: 900px) {
-    /* Footer di HP */
+    
+    /* --- 1. FOOTER (TIDAK BERUBAH/TETAP) --- */
     .footer-col { 
         text-align: center; 
         width: 100%; 
@@ -988,9 +1063,6 @@ footer {
         justify-content: center; 
     }
 
-    /* --- TAMBAHAN PENTING DI SINI --- */
-    
-    /* 1. Paksa List (ul) agar itemnya di tengah */
     .footer-col ul {
         padding: 0;
         display: flex;
@@ -998,50 +1070,56 @@ footer {
         align-items: center; 
     }
 
-    /* 2. Paksa Link (a) agar teks di dalamnya ke tengah */
     .footer-col ul li a { 
-        justify-content: center; /* Ini kuncinya! */
+        justify-content: center; 
         width: 100%;
         text-align: center;
     }
 
-    /* 3. Media Sosial juga ikut rata tengah */
     .social-list { 
         justify-content: center; 
     }
 
-    
-    /* 1. NAVBAR HEADER */
-    nav {
+
+    /* --- 2. NAVBAR HEADER (DISESUAIKAN UNTUK FIXED NAV) --- */
+    nav.navbar-fixed {
         padding: 15px 20px;
-        justify-content: space-between; /* Logo kiri, Hamburger kanan */
-        position: relative; 
+        justify-content: space-between; 
+        background-color: white; /* Pastikan background putih saat menu dibuka */
+    }
+    
+    /* Saat discroll di HP, padding tetap konsisten */
+    nav.navbar-fixed.scrolled {
+        padding: 15px 20px; 
     }
 
     .logo {
-        font-size: 1rem; /* Font logo dikecilkan sedikit */
+        font-size: 1rem; 
     }
 
-    /* 2. MUNCULKAN HAMBURGER */
+    /* --- 3. HAMBURGER MENU (TETAP) --- */
     .menu-toggle {
-        display: flex; /* Di HP tombol ini muncul */
+        display: flex; 
     }
+    
+    /* Pastikan warna hamburger contrast (hitam/putih tergantung scroll) */
+    nav.navbar-fixed .menu-toggle span { background-color: #333; }
+    nav.navbar-fixed.scrolled .menu-toggle span { background-color: white; }
 
-    /* 3. MENU NAVIGASI (Disembunyikan Dulu) */
+
+    /* --- 4. MENU NAVIGASI (DROPDOWN) --- */
     .nav-links {
         position: absolute;
-        top: 100%; /* Muncul tepat di bawah navbar */
+        top: 100%; 
         right: 0;
         width: 100%;
         background-color: white;
         flex-direction: column;
         align-items: center;
-        gap: 0; /* Jarak diatur padding li */
+        gap: 0; 
         padding: 0;
         border-top: 1px solid #eee;
         box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        
-        /* EFEK SLIDE (Sembunyi) */
         display: none; 
         opacity: 0;
         transform: translateY(-20px);
@@ -1049,7 +1127,6 @@ footer {
         z-index: 99;
     }
 
-    /* CLASS UNTUK MEMUNCULKAN MENU (Dipanggil Javascript) */
     .nav-links.slide {
         display: flex;
         opacity: 1;
@@ -1066,35 +1143,66 @@ footer {
         display: block;
         padding: 15px;
         width: 100%;
+        /* PENTING: Paksa warna teks hitam di menu mobile, agar tidak putih (invisible) saat navbar discroll */
+        color: #333 !important; 
     }
     
-    /* Tombol Active di dalam menu mobile */
     .btn-active {
         border-radius: 0; 
         background-color: #FFF0EB; 
         color: #F85F14 !important;
     }
 
-    /* --- PERBAIKAN LAYOUT LAINNYA --- */
-    .hero, .proker-container, .about-container, .activity-container, .footer-container {
+
+    /* --- 5. HERO SECTION (FIX: GAMBAR UTUH & TEKS SELALU MUNCUL) --- */
+    
+    .hero-bg {
+        /* 1. KURANGI TINGGI: Agar gambar Landscape tidak di-zoom terlalu parah di layar Portrait */
+        height: 65vh; 
+        min-height: 500px; /* Batas minimal agar teks muat */
+        
+        background-position: center; /* Fokus tengah */
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    /* 2. TEKS SELALU MUNCUL (Tanpa Hover/Tap) */
+    .hero-overlay {
+        opacity: 1; /* Langsung terlihat */
+        background-color: rgba(0,0,0,0.6); /* Gelapkan background agar tulisan terbaca */
+        transition: none; /* Matikan animasi transisi */
+        
+        /* 3. ATASI KETUTUP NAVBAR */
+        padding-top: 100px; /* Dorong isi ke bawah melewati navbar */
+        padding-left: 20px;
+        padding-right: 20px;
+        
+        box-sizing: border-box;
+        
+        /* Pastikan layout flex tetap rapi */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .hero-content {
+        transform: translateY(0); /* Posisi normal (tidak turun) */
+    }
+
+
+    /* --- 6. PERBAIKAN LAYOUT SECTION LAINNYA --- */
+    /* Hapus .hero dari list ini karena sudah beda struktur */
+    .proker-container, .about-container, .activity-container, .footer-container {
         flex-direction: column;
         text-align: center;
     }
 
     .proker-container { flex-direction: column-reverse; }
 
-    .hero { padding: 40px 20px; min-height: auto; margin-top: 20px;}
-    .hero-image img { width: 80%; max-width: 300px; }
-    .hero-image { order: 1; } .hero-text { order: 2; }
-    
-    .blob-bg { width: 300px; height: 300px; left: 50%; top: 50%; transform: translate(-50%, -50%); }
-
     /* Ukuran Font Judul di HP */
     h1, h2 { font-size: 2.2rem !important; }
 
-    /* Footer */
-    .footer-col { text-align: center; width: 100%; }
-    .footer-logo { display: flex; justify-content: center; }
-    .social-list { justify-content: center; }
-    .social-list li a { justify-content: center; }
+    /* Footer align sudah diurus di poin 1 */
 }

@@ -130,33 +130,38 @@ body {
 }
 
 /* ========================================= */
-/* --- RESPONSIVE MOBILE (HP) --- */
+/* --- RESPONSIVE MOBILE (FIX KETUTUP NAVBAR) --- */
 /* ========================================= */
-@media (max-width: 768px) {
+@media (max-width: 900px) { /* Samakan 900px agar konsisten */
+    
     .all-profiles {
-        padding: 50px 20px; /* Padding dikurangi di HP */
+        /* PERBAIKAN: Padding atas 100px agar Judul turun dibawah Navbar */
+        padding: 100px 20px 60px 20px; 
     }
 
     .page-header {
         margin-bottom: 40px;
+        padding: 0 10px;
     }
 
     .page-header h1 {
-        font-size: 2rem; /* Ukuran font judul dikecilkan */
+        font-size: 2rem; 
+        line-height: 1.2;
     }
 
     .profile-grid {
-        gap: 20px; /* Jarak antar kartu lebih rapat */
+        gap: 30px; 
     }
 
     .profile-card {
-        /* Di HP, kartu bisa sedikit lebih lebar agar teks nama panjang muat */
+        width: 100%;
         max-width: 320px; 
+        margin: 0 auto; /* Tengah */
     }
     
     .card-content h3 {
-        font-size: 1.15rem; /* Nama sedikit diperbesar agar terbaca jelas */
-        min-height: auto; /* Di HP, tinggi otomatis saja agar tidak ada ruang kosong aneh */
+        font-size: 1.2rem; 
+        min-height: auto; 
         margin-bottom: 10px;
     }
 }

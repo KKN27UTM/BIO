@@ -153,11 +153,13 @@
 }
 
 /* ========================================= */
-/* --- RESPONSIVE MOBILE (PERBAIKAN) --- */
+/* --- RESPONSIVE MOBILE (FIX KETUTUP NAVBAR) --- */
 /* ========================================= */
 @media (max-width: 900px) {
+    
     .proker-section {
-        padding: 50px 20px; /* Padding dikurangi agar tidak sempit */
+        /* PERBAIKAN: Padding atas 100px agar Judul turun dibawah Navbar */
+        padding: 100px 20px 60px 20px; 
     }
 
     .proker-header {
@@ -165,24 +167,25 @@
     }
 
     .proker-header h1 {
-        font-size: 2rem; /* Judul Halaman lebih kecil */
+        font-size: 2rem; 
+        line-height: 1.2;
     }
 
     .proker-grid {
-        grid-template-columns: 1fr; /* Jadi 1 Kolom */
-        gap: 30px;
+        grid-template-columns: 1fr; /* 1 Kolom */
+        gap: 40px;
     }
     
     .proker-thumb {
-        height: 220px; /* Gambar diperpendek agar konten teks lebih cepat terlihat */
+        height: 220px; 
     }
 
     .proker-content {
-        padding: 25px; /* Padding dalam kartu dikurangi agar teks lebih lebar */
+        padding: 25px; 
     }
 
     .proker-content h3 {
-        font-size: 1.5rem; /* Judul Proker disesuaikan */
+        font-size: 1.5rem; 
     }
 
     .proker-card {

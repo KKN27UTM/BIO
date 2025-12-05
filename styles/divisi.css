@@ -142,40 +142,56 @@
 }
 
 /* ========================================= */
-/* --- RESPONSIVE MOBILE (PERBAIKAN) --- */
+/* --- RESPONSIVE MOBILE (PERBAIKAN FINAL) --- */
 /* ========================================= */
-@media (max-width: 768px) {
+@media (max-width: 900px) { /* Samakan dengan index.css jadi 900px */
+    
     .division-section {
-        padding: 50px 20px; /* Padding dikurangi di HP */
+        /* PERBAIKAN: Ubah padding-top jadi 100px agar tidak ketutupan Navbar */
+        padding: 100px 20px 40px 20px; 
     }
 
     .division-header {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 
     .division-header h1 {
-        font-size: 2rem; /* Judul lebih kecil di HP */
+        font-size: 2rem; /* Judul Halaman dikecilkan */
+        line-height: 1.2;
     }
 
     .category-title {
-        margin: 40px 0 20px 0;
+        margin: 30px 0 20px 0;
     }
 
+    /* Memperbaiki Judul "Badan Pengurus Harian" agar tidak kegedean */
     .category-title h2 {
-        font-size: 1.5rem; /* Judul divisi lebih kecil */
-        border-bottom-width: 2px;
+        font-size: 1.5rem; 
+        border-bottom-width: 3px;
+        padding-bottom: 5px;
     }
 
     .team-grid {
-        gap: 25px; /* Jarak antar kartu lebih rapat */
+        display: flex;
+        flex-direction: column; /* Kartu disusun ke bawah */
+        align-items: center; /* Kartu rata tengah */
+        gap: 30px;
     }
 
     .team-card {
-        /* Di HP, kartu agak diperlebar sedikit agar tulisan nama panjang muat */
-        max-width: 320px; 
+        width: 100%; 
+        max-width: 320px; /* Batasi lebar kartu agar pas di layar HP */
+        margin: 0 auto; /* Pastikan kartu benar-benar di tengah */
     }
 
+    /* Mengurangi tinggi gambar agar tidak terlalu memanjang ke bawah */
     .team-img {
-        height: 300px; /* Gambar lebih tinggi di HP biar jelas */
+        height: 250px; /* Dikurangi dari 300px jadi 250px */
+        object-fit: cover;
+    }
+    
+    /* Opsional: Jika ingin teks di dalam kartu lebih rapi */
+    .team-content h3 {
+        font-size: 1.2rem;
     }
 }

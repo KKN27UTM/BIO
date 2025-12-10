@@ -382,4 +382,41 @@ footer { background-color: #FFF0EB; padding: 80px 80px 40px 80px; color: #333; }
     .footer-col ul { padding: 0; display: flex; flex-direction: column; align-items: center; }
     .footer-col ul li a { justify-content: center; width: 100%; text-align: center; }
     .social-list { justify-content: center; }
+
+    /* ========================= */
+    /* PERBAIKAN KHUSUS ACTIVITY */
+    /* ========================= */
+
+    .platform-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;   /* BIAR FULL RAPI */
+        gap: 18px;
+        text-align: left;
+    }
+
+    .platform-item {
+        width: 100%;
+        display: flex;
+        align-items: center;    /* ICON & TEKS SEJAJAR */
+        gap: 14px;
+        padding: 12px 14px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+    }
+
+    .platform-info h4 {
+        font-size: 1rem;
+        margin-bottom: 4px;
+    }
+
+    .platform-info p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+
+
 }
